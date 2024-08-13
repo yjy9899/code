@@ -1,0 +1,101 @@
+CREATE (E1:cveId1{name:'CVE-2010-2883'})
+CREATE (E2:cveId1{name:'CVE-2010-3333'})
+CREATE (E3:cveId1{name:'CVE-2019-11043'})
+CREATE (E4:cveId1{name:'CVE-2017-7269'})
+CREATE (E5:cveId1{name:'CVE-2001-0797'})
+
+
+====================
+CREATE (W1:cweId1{name:'CWE-119'})
+CREATE (W2:cweId1{name:'CWE-120'})
+
+====================
+CREATE (A1:capecId1{name:'CAPEC-10'})
+CREATE (A2:capecId1{name:'CAPEC-100'})
+CREATE (A3:capecId1{name:'CAPEC-123'})
+CREATE (A4:capecId1{name:'CAPEC-14'})
+CREATE (A5:capecId1{name:'CAPEC-24'})
+CREATE (A6:capecId1{name:'CAPEC-42'})
+CREATE (A7:capecId1{name:'CAPEC-44'})
+CREATE (A8:capecId1{name:'CAPEC-45'})
+CREATE (A9:capecId1{name:'CAPEC-46'})
+CREATE (A10:capecId1{name:'CAPEC-47'})
+CREATE (A11:capecId1{name:'CAPEC-8'})
+CREATE (A12:capecId1{name:'CAPEC-9'})
+CREATE (A13:capecId1{name:'CAPEC-67'})
+CREATE (A14:capecId1{name:'CAPEC-92'})
+
+==================
+CREATE (D1:device1{name:'PDF document'})
+CREATE (D2:device1{name:'crafted RTF data'})
+CREATE (D3:device1{name:'long header beginning with If: <http://'})
+CREATE (D4:device1{name:'telnet and rlogin'})
+
+==============
+CREATE (X1:device1{name:'arbitrary code application crash'})
+CREATE (X2:device1{name:'arbitrary code'})
+CREATE (X3:device1{name:'write past allocated buffers'})
+CREATE (X4:device1{name:'arbitrary commands'})
+
+=================
+CREATE (I1:result1{name:'Buffer Overflow'})
+======================
+CREATE (H1:envirent1{name:'Windows and Mac OS X'})
+CREATE (H2:envirent1{name:'Microsoft Office XP SP3, Office 2003 SP3'})
+CREATE (H3:envirent1{name:'PHP versions 7.1.x'})
+CREATE (H4:envirent1{name:'Microsoft Windows Server 2003 R2'})
+CREATE (H5:envirent1{name:'System V'})
+
+================
+
+CREATE (E1)-[R1:has] -> (W1)
+CREATE (E2)-[R2:has] -> (W1)
+CREATE (E3)-[R3:has] -> (W2)
+CREATE (E4)-[R4:has] -> (W1)
+
+==============
+CREATE (W1)-[RE1:Related] -> (A1)
+CREATE (W1)-[RE2:Related] -> (A2)
+CREATE (W1)-[RE3:Related] -> (A3)
+CREATE (W1)-[RE4:Related] -> (A4)
+CREATE (W1)-[RE5:Related] -> (A5)
+CREATE (W1)-[RE6:Related] -> (A6)
+CREATE (W1)-[RE7:Related] -> (A7)
+CREATE (W2)-[RE8:Related] -> (A8)
+CREATE (W2)-[RE9:Related] -> (A9)
+CREATE (W2)-[RE10:Related] -> (A10)
+CREATE (W2)-[RE11:Related] -> (A11)
+CREATE (W2)-[RE12:Related] -> (A12)
+CREATE (W2)-[RE13:Related] -> (A13)
+CREATE (W2)-[RE14:Related] -> (A14)
+
+===========================
+CREATE (E1)-[r1:via] -> (D1)
+CREATE (E2)-[r2:via] -> (D2)
+CREATE (E4)-[r3:via] -> (D3)
+CREATE (E5)-[r4:via] -> (D4)
+========================
+CREATE (E1)-[re1:need] -> (H1)
+CREATE (E2)-[re2:need] -> (H2)
+CREATE (E3)-[re3:need] -> (H3)
+CREATE (E4)-[re4:need] -> (H4)
+CREATE (E5)-[re5:need] -> (H5)
+========================
+CREATE (D1)-[rel1:execute] -> (X1)
+CREATE (D2)-[rel2:execute] -> (X2)
+CREATE (E3)-[rel3:execute] -> (X3)
+CREATE (D4)-[rel4:execute] -> (X4)
+CREATE (D3)-[rel5:execute] -> (X2)
+=====================
+CREATE (X1)-[Re1:lead_to] -> (I1)
+CREATE (X2)-[Re2:lead_to] -> (I1)
+CREATE (X3)-[Re3:lead_to] -> (I1)
+CREATE (X4)-[Re4:lead_to] -> (I1)
+=====
+CREATE (E5)-[RE15:Related] -> (A2)
+
+RETURN E1,E2,E3,E4,E5,W1,W2,A1,A2,A3,A4,A5,A6,A7,A8,A9,A10,A11,A12,A13,A14,
+D1,D2,D3,D4,X1,X2,X3,X4,I1,H1,H2,H3,H4,H5,R1,R2,R3,R4,RE1,RE2,RE3,RE4,RE5,RE6,
+RE7,RE8,RE9,RE10,RE11,RE12,RE13,RE14,r1,r2,r3,r4,
+re1,re2,re3,re4,re5,rel1,rel2,rel3,rel4,rel5,Re1,Re2,Re3,Re4
+
